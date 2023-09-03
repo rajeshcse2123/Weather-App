@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--FONT-AWESOME--->
+    <script src="https://kit.fontawesome.com/2a8c4a7fac.js" crossorigin="anonymous"></script>
+
+    <!-- css -->
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="weather-app <%= bgRender %>">
+        <div class="container" >
+            <h3 class="brand">MY WEATHER</h3>
+            <div>
+                <h1 class="temp"><%=tempRender%>&#176C</h1>
+
+                <div class="city-time">
+                    <h1 class="name"><%= cityRender %></h1>
+                    <small>
+                        <span class="time"><%= cityDateRender %></span></small>
+                </div>
+
+                <div class="weather">
+                    <img src="https://openweathermap.org/img/wn/<%= iconRender %>@2x.png" alt="icon" class="icon" width="50"
+                        height="50">
+
+                    <span class="condition"><%= descRender %></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <!-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima voluptatem maxime eaque aliquam, expedita, tempore quis obcaecati suscipit esse nobis sunt laboriosam iusto illum odio quia sequi provident at iure? Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores ullam aperiam quibusdam sunt in soluta placeat mollitia fugiat atque vero accusamus reprehenderit molestias, provident perferendis omnis quos itaque. Qui, iste. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum harum cum suscipit tenetur! Magni neque optio aut magnam est! Molestiae pariatur culpa dolorum iure magnam, beatae doloremque? Rem, sit! At. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam iure aliquam quae non pariatur minima ratione dolor voluptas laboriosam in veritatis esse facilis, sed temporibus illum quaerat! Voluptas, perspiciatis nam. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur totam blanditiis iusto reprehenderit aliquam modi corporis veniam? Rerum earum ex adipisci. Culpa omnis voluptatibus officia repellendus repudiandae ut, neque odio?</p> -->
+            <form id="locationInput" action="/" method="post">
+                <input type="text" name="city" placeholder="Search Location..." id="" class="search" autocomplete="off">
+                <button type="submit" class="submit">
+                    <i class="fa-sharp fa-solid fa-magnifying-glass-location"></i>
+                </button>
+            </form>
+
+            <!-- <ul class="" cities>
+                <li class="city">New York</li>
+                <li class="city">Mumbai</li>
+                <li class="city">Paris</li>
+                <li class="city">Peru</li>
+            </ul> -->
+
+            <ul class="details">
+                <h4>Weather Details</h4>
+                <li>
+                    <span>Air Pressure</span>
+                    <span class="cloud"><%= pressureRender %> hPa</span>
+                </li>
+                <li>
+                    <span>Humidity</span>
+                    <span class="humidity"><%= humidRender %>%</span>
+                </li>
+                <li>
+                    <span>Wind</span>
+                    <span class="Wind"><%=windSpeedRender%>km/h</span>
+                </li>
+            </ul>
+
+            <div class="forecast">
+                <h4>5 Day-Forecast</h4>
+                <table>
+                    <tr>
+                        <th>Day</th>
+                        <th>Weather</th>
+                        <th>Min Temp</th>
+                        <th>Max Temp</th>
+                    </tr>
+                    <% for(var i = 0 ; i<5 ; i++){ %>
+                        <tr>
+                            <th>Today</th>
+                            <td><img src="https://openweathermap.org/img/wn/<%= forIconRender[i] %>@2x.png" alt=""></td>
+                            <td><%= minTempRender[i] %>°C</td>
+                            <td><%= maxTempRender[i] %>°C</td>
+                        </tr>
+                    <%}%>
+                </table>
+            </div>
+
+            <div class="hourly-forecast">
+
+            </div>
+        </div>
+    </div>
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
